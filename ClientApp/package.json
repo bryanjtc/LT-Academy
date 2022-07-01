@@ -47,6 +47,9 @@
     "nan": "2.16.0",
     "typescript": "4.7.4"
   },
+  "resolutions": {
+    "react-scripts/**/autoprefixer": "10.4.5"
+  },
   "scripts": {
     "prestart": "node aspnetcore-https && node aspnetcore-react",
     "start": "rimraf ./build && react-scripts start",
