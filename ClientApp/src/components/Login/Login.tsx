@@ -1,5 +1,6 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 import {
   Book,
   ArrowRightSquare,
@@ -8,16 +9,18 @@ import {
 } from "react-bootstrap-icons";
 import styles from "./Login.module.css";
 
-const { hero } = styles;
+const { hero, buttonRegister, buttonRecover, buttonGroup } = styles;
 
 const Login = () => {
   return (
-    <div className="d-flex justify-content-between align-items-center h-100 gap-3">
-      <div className={`d-flex flex-column gap-3 align-items-center ${hero}`}>
+    <div className="d-flex flex-column flex-md-row justify-content-between align-items-center h-100 gap-5">
+      <div
+        className={`d-flex flex-column gap-3 align-items-center w-100 ${hero}`}
+      >
         <Book size={200} />
         <h1 className="text-center">LEARN TOGETHER ACADEMY</h1>
       </div>
-      <Form className="border border-primary border-2 rounded p-3 w-50">
+      <Form className="form border border-primary border-2 rounded p-3 w-100">
         <h3 className="text-center">Inicio de Sesión</h3>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Correo</Form.Label>
@@ -36,20 +39,27 @@ const Login = () => {
             Iniciar Sesión
           </Button>
         </div>
-        <div className="d-flex justify-content-between gap-3">
-          <Button
-            className="d-flex align-items-center justify-content-center w-100 gap-1"
-            variant="outline-primary"
+        <div className={buttonGroup}>
+          <Link
+            to="/recover-password"
+            className={`w-100 h-100 ${buttonRecover}`}
           >
-            <ArrowClockwise size={14} />
-            Recuperar contraseña
-          </Button>
-          <Button
-            className="d-flex align-items-center justify-content-center w-100 gap-1"
-            variant="outline-primary"
-          >
-            <Person size={14} /> Registrarse
-          </Button>
+            <Button
+              className="d-flex align-items-center justify-content-center w-100 gap-1 h-100"
+              variant="outline-primary"
+            >
+              <ArrowClockwise size={14} />
+              Recuperar contraseña
+            </Button>
+          </Link>
+          <Link to="/register" className={`w-100 h-100 ${buttonRegister}`}>
+            <Button
+              className="d-flex align-items-center justify-content-center w-100 gap-1 h-100"
+              variant="outline-primary"
+            >
+              <Person size={14} /> Registrarse
+            </Button>
+          </Link>
         </div>
       </Form>
     </div>

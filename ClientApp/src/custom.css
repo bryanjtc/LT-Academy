@@ -1,22 +1,58 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 :root {
+  --space: 1rem;
   --verde-blanco: #e1f6f4;
   --verde-claro: #7db9b3;
   --verde: #166678;
   --verde-oscuro: #2e3837;
+  --space-1: var(--space) * 0.25;
+  --space-2: var(--space) * 0.5;
+  --space-3: var(--space);
+  --space-4: var(--space) * 1.5;
+  --space-5: var(--space) * 3;
 }
 
 a {
   color: #0366d6;
+  text-decoration: none;
 }
 
 code {
   color: #e01a76;
 }
 
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+select {
+  color: var(--verde) !important;
+  border-color: var(--verde-claro) !important;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="search"]::placeholder,
+select::placeholder {
+  color: var(--verde) !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+select:focus {
+  box-shadow: 0 0 0 0.25rem var(--verde-claro) !important;
+}
+
 * {
   font-family: "Roboto", sans-serif;
+}
+
+.form {
+  border-color: var(--verde) !important;
 }
 
 .layout {
@@ -49,6 +85,10 @@ code {
   border-color: var(--verde-blanco);
 }
 
+.btn-primary::focus {
+  box-shadow: 0 0 0 0.25rem var(--verde) !important;
+}
+
 .btn-outline-primary {
   background-color: var(--verde-blanco);
   color: var(--verde-oscuro);
@@ -59,6 +99,16 @@ code {
   background-color: var(--verde-oscuro);
   color: var(--verde-blanco);
   border-color: var(--verde-blanco);
+}
+
+.btn-outline-primary::focus {
+  box-shadow: 0 0 0 0.25rem var(--verde) !important;
+}
+
+.alert-primary {
+  background-color: var(--verde-blanco) !important;
+  color: var(--verde) !important;
+  border-color: var(--verde-claro) !important;
 }
 
 @import "bootstrap/dist/css/bootstrap.css";

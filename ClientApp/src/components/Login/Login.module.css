@@ -1,0 +1,24 @@
+.hero {
+  color: var(--verde-oscuro) !important;
+}
+
+.hero > svg {
+  color: var(--verde) !important;
+}
+
+.buttonGroup {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: var(--space-3);
+  grid-row-gap: 0px;
+  grid-template-areas: "recover register";
+}
+
+.buttonRecover {
+  grid-area: recover;
+}
+
+.buttonRegister {
+  grid-area: register;
+}

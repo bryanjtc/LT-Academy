@@ -12,7 +12,7 @@ const { navbarBrand, navbar, navLink } = styles;
 
 const NavMenu = () => {
   return (
-    <Navbar expand={size} className={`mb-3 ${navbar}`}>
+    <Navbar expand={size} className={`mb-3 sticky-top ${navbar}`}>
       <Container fluid>
         <Navbar.Brand
           className={`d-flex align-items-center gap-2 ${navbarBrand}`}
