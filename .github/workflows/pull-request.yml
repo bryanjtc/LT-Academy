@@ -1,10 +1,12 @@
 name: Build and test .NET Core app on PR
 on: pull_request
 env:
+  AZURE_WEBAPP_NAME: LTAcademy2022
+  AZURE_WEBAPP_PACKAGE_PATH: ./publish
+  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.LTAcademy2022_8e86 }}
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 6.0.x
   WORKING_DIRECTORY: .
-  AZURE_WEBAPP_PACKAGE_PATH: ./publish
 jobs:
   build-and-test:
     runs-on: windows-latest
@@ -22,6 +24,13 @@ jobs:
         run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
       - name: Publish
         run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
+      - name: Deploy to Azure WebApp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          production_branch: "master"
   prettier:
     runs-on: ubuntu-latest
     steps:
