@@ -1,4 +1,12 @@
-/* Provide sufficient contrast against white background */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+:root {
+  --verde-blanco: #e1f6f4;
+  --verde-claro: #7db9b3;
+  --verde: #166678;
+  --verde-oscuro: #2e3837;
+}
+
 a {
   color: #0366d6;
 }
@@ -7,8 +15,50 @@ code {
   color: #e01a76;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+* {
+  font-family: "Roboto", sans-serif;
 }
+
+.layout {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header"
+    "content";
+}
+
+.content {
+  grid-area: content;
+}
+
+.btn {
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: var(--verde-oscuro);
+  color: var(--verde-blanco);
+  border-color: var(--verde-oscuro);
+}
+
+.btn-primary:hover {
+  background-color: var(--verde-blanco);
+  color: var(--verde-oscuro);
+  border-color: var(--verde-blanco);
+}
+
+.btn-outline-primary {
+  background-color: var(--verde-blanco);
+  color: var(--verde-oscuro);
+  border-color: vvar(--verde-oscuro);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--verde-oscuro);
+  color: var(--verde-blanco);
+  border-color: var(--verde-blanco);
+}
+
+@import "bootstrap/dist/css/bootstrap.css";

@@ -1,0 +1,12 @@
+﻿.navbarBrand {
+  color: var(--verde-blanco) !important;
+}
+
+.navbar {
+  background-color: var(--verde);
+  grid-area: header;
+}
+
+.navLink {
+  color: var(--verde-blanco) !important;
+}

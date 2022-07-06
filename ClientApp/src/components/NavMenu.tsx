@@ -1,70 +1,65 @@
-import { Component } from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
-  NavItem,
-  NavLink,
-} from "reactstrap";
-import { Link } from "react-router-dom";
-import "./NavMenu.css";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Offcanvas from "react-bootstrap/Offcanvas";
+import { Search, Book } from "react-bootstrap-icons";
+import styles from "./NavMenu.module.css";
 
-export class NavMenu extends Component<{}, { collapsed: boolean }> {
-  static displayName = NavMenu.name;
+const size = "md";
+const { navbarBrand, navbar, navLink } = styles;
 
-  constructor(props: any) {
-    super(props);
-
-    this.toggleNavbar = this.toggleNavbar.bind(this);
-    this.state = {
-      collapsed: true,
-    };
-  }
-
-  toggleNavbar() {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  }
-
-  render() {
-    return (
-      <header>
-        <Navbar
-          className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3"
-          container
-          light
+const NavMenu = () => {
+  return (
+    <Navbar expand={size} className={`mb-3 ${navbar}`}>
+      <Container fluid>
+        <Navbar.Brand
+          className={`d-flex align-items-center gap-2 ${navbarBrand}`}
+          href="#"
         >
-          <NavbarBrand tag={Link} to="/">
-            LT_Academy
-          </NavbarBrand>
-          <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-          <Collapse
-            className="d-sm-inline-flex flex-sm-row-reverse"
-            isOpen={!this.state.collapsed}
-            navbar
-          >
-            <ul className="navbar-nav flex-grow">
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/">
-                  Home
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/counter">
-                  Counter
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/fetch-data">
-                  Fetch data
-                </NavLink>
-              </NavItem>
-            </ul>
-          </Collapse>
-        </Navbar>
-      </header>
-    );
-  }
-}
+          <Book size={25} /> LT Academy
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${size}`} />
+        <Navbar.Offcanvas
+          id={`offcanvasNavbar-expand-${size}`}
+          aria-labelledby={`offcanvasNavbarLabel-expand-${size}`}
+          placement="end"
+        >
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${size}`}>
+              Offcanvas
+            </Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body className="d-flex justify-content-between">
+            <Nav>
+              <Nav.Link className={navLink} href="#action1">
+                Inicio
+              </Nav.Link>
+              <Nav.Link className={navLink} href="#action2">
+                Cerrar Sesion
+              </Nav.Link>
+            </Nav>
+            <Form className="d-flex w-50">
+              <Form.Control
+                type="search"
+                placeholder="Busque su curso aqui..."
+                className="me-2"
+                aria-label="Search"
+              />
+              <Button
+                variant="primary"
+                className="d-flex align-items-center gap-1"
+              >
+                <Search size={14} />
+                Buscar
+              </Button>
+            </Form>
+          </Offcanvas.Body>
+        </Navbar.Offcanvas>
+      </Container>
+    </Navbar>
+  );
+};
+
+export default NavMenu;
