@@ -15,7 +15,7 @@ jobs:
     runs-on: windows-latest
     environment:
       name: PROD
-      url: "ltacademy2022.azurewebsites.net"
+      url: "https://ltacademy2022.azurewebsites.net"
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET Core
