@@ -54,4 +54,4 @@ jobs:
           eslint-args: "--ignore-path=.gitignore --quiet"
           extensions: "js,jsx,ts,tsx"
           annotations: true
-          slot-name: ${{github.ref_name}}
+
