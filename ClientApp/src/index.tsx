@@ -1,5 +1,8 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "./reducers";
+import { Provider } from "react-redux";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
@@ -7,11 +10,16 @@ import reportWebVitals from "./reportWebVitals";
 const baseUrl = document.getElementsByTagName("base")[0].getAttribute("href");
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement as HTMLElement);
+const store = configureStore({
+  reducer: rootReducer,
+});
 
 root.render(
-  <BrowserRouter basename={baseUrl as string}>
-    <App />
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter basename={baseUrl as string}>
+      <App />
+    </BrowserRouter>
+  </Provider>
 );
 
 // If you want your app to work offline and load faster, you can change

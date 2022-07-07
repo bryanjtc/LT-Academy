@@ -7,11 +7,18 @@ import {
   ArrowClockwise,
   Person,
 } from "react-bootstrap-icons";
+import actions from "../../actions";
+import { useDispatch } from "react-redux";
 import styles from "./Login.module.css";
 
 const { hero, buttonRegister, buttonRecover, buttonGroup } = styles;
 
 const Login = () => {
+  const user = { name: "Rei" };
+  const {
+    userActions: { setUser },
+  } = actions;
+  const dispatch = useDispatch();
   return (
     <div className="d-flex flex-column flex-md-row justify-content-between align-items-center h-100 gap-5">
       <div
@@ -34,6 +41,7 @@ const Login = () => {
           <Button
             className="d-flex align-items-center justify-content-center w-100 gap-1"
             variant="primary mb-3"
+            onClick={() => dispatch(setUser(user))}
           >
             <ArrowRightSquare size={14} />
             Iniciar Sesión

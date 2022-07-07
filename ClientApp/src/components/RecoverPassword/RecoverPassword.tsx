@@ -1,19 +1,35 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Book, ArrowRightSquare } from "react-bootstrap-icons";
 import DismissableAlert from "../DismissableAlert";
+import { useDispatch, useSelector } from "react-redux";
+import type { CurrentAlertData } from "../../reducers";
+import actions from "../../actions";
+import { useLocation } from "react-router-dom";
 import styles from "./RecoverPassword.module.css";
 
 const { hero } = styles;
+const message = {
+  content: "Ha sido enviada una contraseña temporal a su correo electronico",
+};
 
 const RecoverPassword = () => {
-  const [show, setShow] = useState(false);
+  const {
+    alertActions: { setAlert, dismiss },
+  } = actions;
+  const dispatch = useDispatch();
+  const currentAlert = useSelector(
+    ({ currentAlert }: { currentAlert: CurrentAlertData }) => currentAlert
+  );
+  const { show } = currentAlert;
+  const location = useLocation();
+  useEffect(() => {
+    dispatch(dismiss());
+  }, [location, dispatch, dismiss]);
   return (
     <div className="d-flex flex-column h-100 gap-5">
-      <DismissableAlert variant="primary" show={show} setShow={setShow}>
-        Ha sido enviada una contraseña temporal a su correo electronico
-      </DismissableAlert>
+      {show && <DismissableAlert variant="primary" />}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-center h-100 gap-3">
         <div
           className={`d-flex flex-column gap-3 align-items-center w-100 ${hero}`}
@@ -31,7 +47,7 @@ const RecoverPassword = () => {
             <Button
               className="d-flex align-items-center justify-content-center w-100 gap-1"
               variant="primary mb-3"
-              onClick={() => setShow(true)}
+              onClick={() => dispatch(setAlert(message))}
             >
               <ArrowRightSquare size={14} />
               Continuar

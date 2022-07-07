@@ -4,12 +4,17 @@ import {
   Register,
   RecoverPassword,
   Login,
+  CourseList,
 } from "./components";
 
 const AppRoutes = [
   {
     index: true,
     element: <Login />,
+  },
+  {
+    path: "/course-list",
+    element: <CourseList />,
   },
   {
     path: "/recover-password",
