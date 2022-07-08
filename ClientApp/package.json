@@ -2,6 +2,7 @@
   "name": "lt_academy",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "yarn@3.2.1",
   "dependencies": {
     "@testing-library/jest-dom": "npm:@testing-library/jest-dom@5.16.4",
     "@testing-library/react": "npm:@testing-library/react@13.3.0",
@@ -52,6 +53,9 @@
     "typescript": "npm:typescript@4.7.4",
     "webpack": "npm:webpack@5.73.0"
   },
+  "resolutions": {
+    "autoprefixer": "npm:autoprefixer@10.4.5"
+  },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --cache --fix",
     "*.{json,md,mdx,js,ts,tsx,scss}": "prettier --check --write --cache"
@@ -81,6 +85,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "packageManager": "yarn@3.2.1"
+  }
 }
