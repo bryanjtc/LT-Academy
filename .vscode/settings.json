@@ -1,3 +1,7 @@
 {
-    "files.eol": "\n",
+  "files.eol": "\n",
+  "eslint.nodePath": "ClientApp/.yarn/sdks",
+  "prettier.prettierPath": "ClientApp/.yarn/sdks/prettier/index.js",
+  "typescript.tsdk": "ClientApp/.yarn/sdks/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
