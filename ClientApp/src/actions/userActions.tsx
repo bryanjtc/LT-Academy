@@ -1,8 +1,8 @@
 import type { CurrentUserData } from "../reducers";
 
-const setUser = (data: CurrentUserData["user"]) => {
+const logIn = (data: CurrentUserData["user"]) => {
   return {
-    type: "SET_USER",
+    type: "LOGIN",
     payload: data,
   };
 };
@@ -14,7 +14,7 @@ const logOut = () => {
 };
 
 const userActions = {
-  setUser,
+  logIn,
   logOut,
 };
 

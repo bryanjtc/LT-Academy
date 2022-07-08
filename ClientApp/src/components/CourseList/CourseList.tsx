@@ -1,23 +1,29 @@
+import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { ArrowRightSquare } from "react-bootstrap-icons";
 import DismissableAlert from "../DismissableAlert";
-import styles from "./CourseList.module.css";
-import { useSelector } from "react-redux";
 import type { CurrentAlertData } from "../../reducers";
-const { hero } = styles;
+import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import actions from "../../actions";
 
-const message = {
-  content: "Registro Exitoso",
-};
-
-const CourseList = ({ mensaje }: { mensaje?: string }) => {
+const CourseList = () => {
+  const {
+    alertActions: { dismiss },
+  } = actions;
+  const dispatch = useDispatch();
   const currentAlert = useSelector(
     ({ currentAlert }: { currentAlert: CurrentAlertData }) => currentAlert
   );
+  const { show } = currentAlert;
+  const pathName = useLocation().pathname;
+  useEffect(() => {
+    pathName !== "/course-list" && dispatch(dismiss());
+  }, [dispatch, dismiss, pathName]);
   return (
     <div className="d-flex flex-column h-100 gap-5">
-      <DismissableAlert variant="success" />
+      {show && <DismissableAlert variant="success" />}
       <div className="d-flex align-items-center h-100">
         <h1 className="text-center">Lista de cursos</h1>
         {[].map(({ title, description, buttonText }) => (

@@ -47,7 +47,7 @@ const NavMenu = () => {
           <Offcanvas.Body className="d-flex justify-content-between">
             <Nav>
               {pathName !== "/" && (
-                <LinkContainer to="/">
+                <LinkContainer to={loggedIn ? "/course-list" : "/"}>
                   <Nav.Link className={navLink}>Inicio</Nav.Link>
                 </LinkContainer>
               )}

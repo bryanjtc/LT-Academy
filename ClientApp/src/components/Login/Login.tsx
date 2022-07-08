@@ -16,7 +16,7 @@ const { hero, buttonRegister, buttonRecover, buttonGroup } = styles;
 const Login = () => {
   const user = { name: "Rei" };
   const {
-    userActions: { setUser },
+    userActions: { logIn },
   } = actions;
   const dispatch = useDispatch();
   return (
@@ -41,7 +41,7 @@ const Login = () => {
           <Button
             className="d-flex align-items-center justify-content-center w-100 gap-1"
             variant="primary mb-3"
-            onClick={() => dispatch(setUser(user))}
+            onClick={() => dispatch(logIn(user))}
           >
             <ArrowRightSquare size={14} />
             Iniciar Sesión

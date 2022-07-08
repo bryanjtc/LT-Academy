@@ -5,10 +5,10 @@ export type CurrentUserData = {
 
 const currentUser = (
   state = {},
-  action: { type: "SET_USER" | "LOG_OUT"; payload?: { name: string } }
+  action: { type: "LOGIN" | "LOG_OUT"; payload?: { name: string } }
 ) => {
   switch (action.type) {
-    case "SET_USER":
+    case "LOGIN":
       return {
         ...state,
         user: action.payload,

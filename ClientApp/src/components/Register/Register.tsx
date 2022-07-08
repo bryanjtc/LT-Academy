@@ -1,11 +1,21 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Book, ArrowRightSquare } from "react-bootstrap-icons";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import actions from "../../actions";
 import styles from "./Register.module.css";
 
 const { hero } = styles;
+const message = {
+  content: "Registro Exitoso",
+};
 
 const Register = () => {
+  const {
+    alertActions: { setAlert },
+  } = actions;
+  const dispatch = useDispatch();
   return (
     <div className="d-flex flex-column flex-md-row justify-content-between align-items-center h-100 gap-3 mb-5">
       <div
@@ -56,13 +66,19 @@ const Register = () => {
           <Form.Control type="password" placeholder="1234" />
         </Form.Group>
         <div className="d-flex justify-content-center">
-          <Button
-            className="d-flex align-items-center justify-content-center w-100 gap-1"
-            variant="primary mb-3"
+          <Link
+            to="/course-list"
+            className={`w-100 h-100`}
+            onClick={() => dispatch(setAlert(message))}
           >
-            <ArrowRightSquare size={14} />
-            Continuar
-          </Button>
+            <Button
+              className="d-flex align-items-center justify-content-center w-100 gap-1"
+              variant="primary mb-3"
+            >
+              <ArrowRightSquare size={14} />
+              Continuar
+            </Button>
+          </Link>
         </div>
       </Form>
     </div>

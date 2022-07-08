@@ -92,7 +92,7 @@ select:focus {
 .btn-outline-primary {
   background-color: var(--verde-blanco);
   color: var(--verde-oscuro);
-  border-color: vvar(--verde-oscuro);
+  border-color: var(--verde-oscuro);
 }
 
 .btn-outline-primary:hover {
