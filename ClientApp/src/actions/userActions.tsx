@@ -13,9 +13,16 @@ const logOut = () => {
   };
 };
 
+const register = () => {
+  return {
+    type: "REGISTER",
+  };
+};
+
 const userActions = {
   logIn,
   logOut,
+  register,
 };
 
 export default userActions;

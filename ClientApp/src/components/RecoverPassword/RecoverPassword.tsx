@@ -11,7 +11,7 @@ import styles from "./RecoverPassword.module.css";
 
 const { hero } = styles;
 const message = {
-  content: "Ha sido enviada una contraseña temporal a su correo electronico",
+  content: "Ha sido enviada una contraseña temporal a su correo electrónico",
 };
 
 const RecoverPassword = () => {

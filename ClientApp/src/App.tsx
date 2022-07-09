@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import AppRoutes from "./AppRoutes";
 import { Layout } from "./components/Layout";
+import "react-loading-skeleton/dist/skeleton.css";
 import "./custom.css";
 
 export default class App extends Component {

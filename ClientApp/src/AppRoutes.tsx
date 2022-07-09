@@ -5,6 +5,8 @@ import {
   RecoverPassword,
   Login,
   CourseList,
+  Course,
+  AddCourse,
 } from "./components";
 
 const AppRoutes = [
@@ -23,6 +25,14 @@ const AppRoutes = [
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/course/:id",
+    element: <Course />,
+  },
+  {
+    path: "/add-course",
+    element: <AddCourse />,
   },
   {
     path: "/counter",

@@ -41,11 +41,11 @@ const NavMenu = () => {
         >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${size}`}>
-              Offcanvas
+              Menu
             </Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body className="d-flex justify-content-between">
-            <Nav>
+          <Offcanvas.Body className="d-md-flex justify-content-between">
+            <Nav className="w-100">
               {pathName !== "/" && (
                 <LinkContainer to={loggedIn ? "/course-list" : "/"}>
                   <Nav.Link className={navLink}>Inicio</Nav.Link>
@@ -57,15 +57,15 @@ const NavMenu = () => {
                     className={navLink}
                     onClick={() => dispatch(logOut())}
                   >
-                    Cerrar Sesion
+                    Cerrar Sesión
                   </Nav.Link>
                 </LinkContainer>
               )}
             </Nav>
-            <Form className="d-flex w-50">
+            <Form className="d-flex w-100">
               <Form.Control
                 type="search"
-                placeholder="Busque su curso aqui..."
+                placeholder="Busque su curso aquí..."
                 className="me-2"
                 aria-label="Search"
               />

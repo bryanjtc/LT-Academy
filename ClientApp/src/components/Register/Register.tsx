@@ -11,9 +11,12 @@ const message = {
   content: "Registro Exitoso",
 };
 
+const user = { name: "Rei" };
+
 const Register = () => {
   const {
     alertActions: { setAlert },
+    userActions: { register, logIn },
   } = actions;
   const dispatch = useDispatch();
   return (
@@ -69,7 +72,11 @@ const Register = () => {
           <Link
             to="/course-list"
             className={`w-100 h-100`}
-            onClick={() => dispatch(setAlert(message))}
+            onClick={() => {
+              dispatch(setAlert(message));
+              dispatch(logIn(user));
+              dispatch(register());
+            }}
           >
             <Button
               className="d-flex align-items-center justify-content-center w-100 gap-1"

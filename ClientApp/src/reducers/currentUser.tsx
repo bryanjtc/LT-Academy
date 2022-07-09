@@ -1,11 +1,12 @@
 export type CurrentUserData = {
   user: { name: string };
   loggedIn: boolean;
+  isRegister: boolean;
 };
 
 const currentUser = (
   state = {},
-  action: { type: "LOGIN" | "LOG_OUT"; payload?: { name: string } }
+  action: { type: "LOGIN" | "LOG_OUT" | "REGISTER"; payload?: { name: string } }
 ) => {
   switch (action.type) {
     case "LOGIN":
@@ -19,6 +20,11 @@ const currentUser = (
         ...state,
         user: {},
         loggedIn: false,
+      };
+    case "REGISTER":
+      return {
+        ...state,
+        isRegister: true,
       };
     default:
       return state;

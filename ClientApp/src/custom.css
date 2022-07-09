@@ -82,7 +82,7 @@ select:focus {
 .btn-primary:hover {
   background-color: var(--verde-blanco);
   color: var(--verde-oscuro);
-  border-color: var(--verde-blanco);
+  border-color: var(--verde);
 }
 
 .btn-primary::focus {
@@ -109,6 +109,31 @@ select:focus {
   background-color: var(--verde-blanco) !important;
   color: var(--verde) !important;
   border-color: var(--verde-claro) !important;
+}
+
+.offcanvas.show > div {
+  color: var(--verde) !important;
+}
+
+.offcanvas.show a {
+  color: var(--verde) !important;
+}
+
+.card {
+  border: none !important;
+}
+
+.card-body {
+  background-color: var(--verde-blanco) !important;
+  border-right: 1px solid var(--verde) !important;
+  border-left: 1px solid var(--verde) !important;
+  border-bottom: 1px solid var(--verde) !important;
+  border-radius: 0 0 4px 4px;
+  color: var(--verde-oscuro) !important;
+}
+
+.card-body > button {
+  margin: 0 !important;
 }
 
 @import "bootstrap/dist/css/bootstrap.css";
