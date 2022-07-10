@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Book, ArrowRightSquare } from "react-bootstrap-icons";
-import DismissableAlert from "../DismissableAlert";
+import Alert from "../Alert";
 import { useDispatch, useSelector } from "react-redux";
 import type { CurrentAlertData } from "../../reducers";
 import actions from "../../actions";
@@ -29,7 +29,7 @@ const RecoverPassword = () => {
   }, [location, dispatch, dismiss]);
   return (
     <div className="d-flex flex-column h-100 gap-5">
-      {show && <DismissableAlert variant="primary" />}
+      {show && <Alert variant="primary" />}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-center h-100 gap-3">
         <div
           className={`d-flex flex-column gap-3 align-items-center w-100 ${hero}`}

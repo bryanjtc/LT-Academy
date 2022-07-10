@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { ArrowRightSquare } from "react-bootstrap-icons";
 import CardGroup from "react-bootstrap/CardGroup";
-import DismissableAlert from "../DismissableAlert";
+import Alert from "../Alert";
 import type { CurrentAlertData, CurrentUserData } from "../../reducers";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,7 +37,7 @@ const CourseList = () => {
   }, [dispatch, dismiss, pathName]);
   return (
     <div className="d-flex flex-column h-100 gap-5">
-      {show && <DismissableAlert variant="success" />}
+      {show && <Alert variant="success" />}
       <div className="d-flex flex-column align-items-start h-100 gap-3">
         <h1 className="text-center">Lista de cursos</h1>
         <CardGroup>

@@ -1,6 +1,4 @@
 import {
-  Counter,
-  FetchData,
   Register,
   RecoverPassword,
   Login,
@@ -33,14 +31,6 @@ const AppRoutes = [
   {
     path: "/add-course",
     element: <AddCourse />,
-  },
-  {
-    path: "/counter",
-    element: <Counter />,
-  },
-  {
-    path: "/fetch-data",
-    element: <FetchData />,
   },
 ];
 

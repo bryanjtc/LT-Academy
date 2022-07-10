@@ -1,4 +1,4 @@
-import Alert, { AlertProps } from "react-bootstrap/Alert";
+import AlertComponent, { AlertProps } from "react-bootstrap/Alert";
 import {
   ChatRightDots,
   CheckCircle,
@@ -17,11 +17,7 @@ const IconVariants = {
   warning: <ExclamationTriangle size={size} />,
 };
 
-const DismissableAlert = ({
-  variant = "primary",
-}: {
-  variant: AlertProps["variant"];
-}) => {
+const Alert = ({ variant = "primary" }: { variant: AlertProps["variant"] }) => {
   const currentAlert = useSelector(
     ({ currentAlert }: { currentAlert: CurrentAlertData }) => currentAlert
   );
@@ -33,7 +29,7 @@ const DismissableAlert = ({
   } = actions;
 
   return (
-    <Alert
+    <AlertComponent
       className="d-flex align-items-center justify-content-start w-100 gap-2"
       variant={variant}
       onClose={() => dispatch(dismiss())}
@@ -41,8 +37,8 @@ const DismissableAlert = ({
     >
       {IconVariants[variant as "primary" | "success" | "danger" | "warning"]}
       <b className="m-0">{content}</b>
-    </Alert>
+    </AlertComponent>
   );
 };
 
-export default DismissableAlert;
+export default Alert;

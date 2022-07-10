@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import DismissableAlert from "../DismissableAlert";
+import Alert from "../Alert";
 import Badge from "react-bootstrap/Badge";
 import CardGroup from "react-bootstrap/CardGroup";
 import type { CurrentAlertData } from "../../reducers";
@@ -40,7 +40,7 @@ const Course = () => {
   }, [dispatch, dismiss, pathName]);
   return (
     <div className="d-flex flex-column h-100 gap-5">
-      {show && <DismissableAlert variant="success" />}
+      {show && <Alert variant="success" />}
       <div className="d-flex align-items-center h-100">
         <h1 className="text-center">Curso</h1>
         <div>
