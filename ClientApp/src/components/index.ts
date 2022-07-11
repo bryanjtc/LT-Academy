@@ -6,6 +6,7 @@ import Course from "./Course";
 import AddCourse from "./AddCourse";
 import StudentList from "./StudentList";
 import Grades from "./Grades";
+import AddQuestion from "./AddQuestion";
 
 export {
   Register,
@@ -16,4 +17,5 @@ export {
   AddCourse,
   StudentList,
   Grades,
+  AddQuestion,
 };

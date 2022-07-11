@@ -7,6 +7,7 @@ import {
   AddCourse,
   StudentList,
   Grades,
+  AddQuestion,
 } from "./components";
 
 const AppRoutes = [
@@ -41,6 +42,10 @@ const AppRoutes = [
   {
     path: "/course/:id/grades",
     element: <Grades />,
+  },
+  {
+    path: "/course/:id/add-question",
+    element: <AddQuestion />,
   },
 ];
 
