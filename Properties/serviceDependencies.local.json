@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "secretStore": null,
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/LTAcademyvault",
+      "type": "secrets.keyVault",
+      "connectionId": "LTAcademyAKV"
+    },
+    "mssql1": {
+      "secretStore": "AzureKeyVault",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/herramientas/databases/LT_Academy",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:LT_AcademyCS"
+    }
+  }
+}
