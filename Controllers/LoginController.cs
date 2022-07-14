@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
 using LT_Academy.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace LT_Academy.Controllers
 {
@@ -10,10 +11,13 @@ namespace LT_Academy.Controllers
     public class LoginController : ControllerBase
     {
 
+        private readonly ILogger<WeatherForecastController> _logger;
 
         private readonly IConfiguration _configuration;
-        public LoginController(IConfiguration configuration)
+
+        public LoginController(ILogger<WeatherForecastController> logger, IConfiguration configuration)
         {
+            _logger = logger;
             _configuration = configuration;
         }
 
