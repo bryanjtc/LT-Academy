@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using LT_Academy.Models;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace LT_Academy.Controllers
 {
@@ -20,7 +21,7 @@ namespace LT_Academy.Controllers
 
 
         [HttpGet]
-        public JsonResult Get()
+        public string Get()
         {
             string query = @"
                             select *
@@ -41,15 +42,14 @@ namespace LT_Academy.Controllers
                     myCon.Close();
                 }
             }
-
-            return new JsonResult(table);
+            return JsonConvert.SerializeObject(table);
         }
 
         [HttpPost]
-        public JsonResult Post([FromBody] Credenciales credenciales)
+        public string Post([FromBody] Credenciales credenciales)
         {
             DataTable table = new();
-            string sqlDataSource = Configuration.GetConnectionString("Default");
+            string sqlDataSource = Configuration.GetConnectionString("DefaultConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new(sqlDataSource))
             {
@@ -58,7 +58,7 @@ namespace LT_Academy.Controllers
                 {
                     myCommand.CommandType = CommandType.StoredProcedure;
                     myCommand.Parameters.AddWithValue("@correo", credenciales.correo);
-                    myCommand.Parameters.AddWithValue("@contrase�a", credenciales.password);
+                    myCommand.Parameters.AddWithValue("@contraseña", credenciales.password);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -66,7 +66,7 @@ namespace LT_Academy.Controllers
                 }
             }
 
-            return new JsonResult(table);
+            return JsonConvert.SerializeObject(table);
         }
     }
 }

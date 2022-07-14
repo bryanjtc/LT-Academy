@@ -77,6 +77,7 @@
       "plugin:prettier/recommended"
     ]
   },
+  "proxy": "https://localhost:7049",
   "browserslist": {
     "production": [
       ">0.2%",
