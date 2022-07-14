@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -8,17 +9,43 @@ import {
   Person,
 } from "react-bootstrap-icons";
 import actions from "../../actions";
+import axios from "axios";
 import { useDispatch } from "react-redux";
 import styles from "./Login.module.css";
 
 const { hero, buttonRegister, buttonRecover, buttonGroup } = styles;
 
+const fetchData = async () => {
+  try {
+    const response = await axios.post("login", {
+      correo: "1",
+      password: "2",
+    });
+    const data = await response.data;
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+};
+const fetchData2 = async () => {
+  try {
+    const response = await fetch("weatherforecast");
+    const data = await response.json();
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+};
 const Login = () => {
   const user = { name: "Rei" };
   const {
     userActions: { logIn },
   } = actions;
   const dispatch = useDispatch();
+  useEffect(() => {
+    fetchData();
+    fetchData2();
+  }, []);
   return (
     <div className="d-flex flex-column flex-md-row justify-content-between align-items-center h-100 gap-5">
       <div
