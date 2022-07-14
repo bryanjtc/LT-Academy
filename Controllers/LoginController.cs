@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
 using LT_Academy.Models;
-using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 namespace LT_Academy.Controllers
 {
@@ -11,15 +11,13 @@ namespace LT_Academy.Controllers
     public class LoginController : ControllerBase
     {
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        protected readonly IConfiguration Configuration;
 
-        private readonly IConfiguration _configuration;
-
-        public LoginController(ILogger<WeatherForecastController> logger, IConfiguration configuration)
+        public LoginController(IConfiguration configuration)
         {
-            _logger = logger;
-            _configuration = configuration;
+            Configuration = configuration;
         }
+
 
         [HttpGet]
         public JsonResult Get()
@@ -30,7 +28,7 @@ namespace LT_Academy.Controllers
                             ";
 
             DataTable table = new();
-            string sqlDataSource = _configuration.GetConnectionString("DefaultConnection");
+            string sqlDataSource = Configuration.GetConnectionString("DefaultConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new(sqlDataSource))
             {
@@ -51,7 +49,7 @@ namespace LT_Academy.Controllers
         public JsonResult Post([FromBody] Credenciales credenciales)
         {
             DataTable table = new();
-            string sqlDataSource = _configuration.GetConnectionString("Default");
+            string sqlDataSource = Configuration.GetConnectionString("Default");
             SqlDataReader myReader;
             using (SqlConnection myCon = new(sqlDataSource))
             {
