@@ -18,8 +18,8 @@ const { hero, buttonRegister, buttonRecover, buttonGroup } = styles;
 const fetchData = async () => {
   try {
     const response = await axios.post("login", {
-      correo: "1",
-      password: "2",
+      correo: "Juan.Perex@gmail.com",
+      password: "1234567890",
     });
     const data = await response.data;
     console.log(data);
