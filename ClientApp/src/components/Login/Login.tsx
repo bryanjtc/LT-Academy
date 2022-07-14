@@ -38,8 +38,8 @@ const fetchData2 = async () => {
 };
 const fetchData3 = async () => {
   try {
-    const response = await fetch("login");
-    const data = await response.json();
+    const response = await axios.get("login");
+    const data = await response.data;
     console.log(data);
   } catch (err) {
     console.error(err);
