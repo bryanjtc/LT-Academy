@@ -36,6 +36,15 @@ const fetchData2 = async () => {
     console.error(err);
   }
 };
+const fetchData3 = async () => {
+  try {
+    const response = await fetch("login");
+    const data = await response.json();
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+};
 const Login = () => {
   const user = { name: "Rei" };
   const {
@@ -45,6 +54,7 @@ const Login = () => {
   useEffect(() => {
     fetchData();
     fetchData2();
+    fetchData3();
   }, []);
   return (
     <div className="d-flex flex-column flex-md-row justify-content-between align-items-center h-100 gap-5">
