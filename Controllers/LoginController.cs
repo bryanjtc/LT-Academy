@@ -6,7 +6,7 @@ using LT_Academy.Models;
 namespace LT_Academy.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("login/[controller]")]
     public class LoginController : ControllerBase
     {
 
