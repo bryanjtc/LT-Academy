@@ -9,12 +9,12 @@ namespace LT_Academy.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class LoginController : ControllerBase
+    public class CursosController : ControllerBase
     {
 
         protected readonly IConfiguration Configuration;
 
-        public LoginController(IConfiguration configuration)
+        public CursosController(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -28,11 +28,10 @@ namespace LT_Academy.Controllers
             using (SqlConnection myCon = new(sqlDataSource))
             {
                 myCon.Open();
-                using SqlCommand myCommand = new("Get_Id_credencial", myCon);
+                using SqlCommand myCommand = new("Get_Cursos_Profesor", myCon);
                 {
                     myCommand.CommandType = CommandType.StoredProcedure;
-                    myCommand.Parameters.AddWithValue("@correo", credenciales.correo);
-                    myCommand.Parameters.AddWithValue("@contraseña", credenciales.password);
+                    myCommand.Parameters.AddWithValue("@id_credencial", credenciales.id_credencial);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();

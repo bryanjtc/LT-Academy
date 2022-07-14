@@ -11,7 +11,7 @@ const message = {
   content: "Registro Exitoso",
 };
 
-const user = { name: "Rei" };
+const user = [{ id_credencial: 1 }];
 
 const Register = () => {
   const {

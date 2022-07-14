@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {
   Book,
   ArrowRightSquare,
@@ -10,75 +10,105 @@ import {
 } from "react-bootstrap-icons";
 import actions from "../../actions";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import type { CurrentUserData } from "../../reducers";
 import styles from "./Login.module.css";
 
 const { hero, buttonRegister, buttonRecover, buttonGroup } = styles;
 
-const fetchData = async () => {
-  try {
-    const response = await axios.post("login", {
-      correo: "Juan.Perex@gmail.com",
-      password: "1234567890",
-    });
-    const data = await response.data;
-    console.log(data);
-  } catch (err) {
-    console.error(err);
-  }
-};
-const fetchData2 = async () => {
-  try {
-    const response = await fetch("weatherforecast");
-    const data = await response.json();
-    console.log(data);
-  } catch (err) {
-    console.error(err);
-  }
-};
-const fetchData3 = async () => {
-  try {
-    const response = await axios.get("login");
-    const data = await response.data;
-    console.log(data);
-  } catch (err) {
-    console.error(err);
-  }
-};
 const Login = () => {
-  const user = { name: "Rei" };
   const {
     userActions: { logIn },
   } = actions;
+  const currentUser = useSelector(
+    ({ currentUser }: { currentUser: CurrentUserData }) => currentUser
+  );
+  const { loggedIn } = currentUser;
   const dispatch = useDispatch();
-  useEffect(() => {
-    fetchData();
-    fetchData2();
-    fetchData3();
-  }, []);
+  const [validated, setValidated] = useState(false);
+  const [user, setUser] = useState({ correo: "", password: "" });
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.post("login", user);
+      dispatch(logIn(await response.data));
+      setUser({ correo: "", password: "" });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  const handleUserChange = (event: { currentTarget: any }) => {
+    const { currentTarget } = event;
+    const { name, value } = currentTarget;
+    setUser({ ...user, [name]: value });
+  };
+
+  const handleSubmit = (event: {
+    currentTarget: any;
+    preventDefault: () => void;
+    stopPropagation: () => void;
+  }) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      event.preventDefault();
+      fetchData();
+    }
+
+    setValidated(true);
+  };
+
   return (
     <div className="d-flex flex-column flex-md-row justify-content-between align-items-center h-100 gap-5">
+      {loggedIn && <Navigate to="/course-list" replace={true} />}
       <div
         className={`d-flex flex-column gap-3 align-items-center w-100 ${hero}`}
       >
         <Book size={200} />
         <h1 className="text-center">LEARN TOGETHER ACADEMY</h1>
       </div>
-      <Form className="form border border-primary border-2 rounded p-3 w-100">
+      <Form
+        noValidate
+        validated={validated}
+        onSubmit={handleSubmit}
+        className="form border border-primary border-2 rounded p-3 w-100"
+      >
         <h3 className="text-center">Inicio de Sesión</h3>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Group className="mb-3" controlId="email">
           <Form.Label>Correo</Form.Label>
-          <Form.Control type="email" placeholder="nombre@ejemplo.com" />
+          <Form.Control
+            required
+            type="email"
+            name="correo"
+            defaultValue={user.correo}
+            placeholder="nombre@ejemplo.com"
+            onChange={handleUserChange}
+          />
+          <Form.Control.Feedback type="invalid">
+            Ingrese su correo.
+          </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+        <Form.Group className="mb-3" controlId="password">
           <Form.Label>Contraseña</Form.Label>
-          <Form.Control type="password" placeholder="1234" />
+          <Form.Control
+            required
+            type="password"
+            name="password"
+            defaultValue={user.password}
+            placeholder="1234"
+            onChange={handleUserChange}
+          />
         </Form.Group>
+        <Form.Control.Feedback type="invalid">
+          Ingrese su contraseña
+        </Form.Control.Feedback>
         <div className="d-flex justify-content-center">
           <Button
             className="d-flex align-items-center justify-content-center w-100 gap-1"
             variant="primary mb-3"
-            onClick={() => dispatch(logIn(user))}
+            type="submit"
           >
             <ArrowRightSquare size={14} />
             Iniciar Sesión

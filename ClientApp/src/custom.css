@@ -125,9 +125,7 @@ select:focus {
 
 .card-body {
   background-color: var(--verde-blanco) !important;
-  border-right: 1px solid var(--verde) !important;
-  border-left: 1px solid var(--verde) !important;
-  border-bottom: 1px solid var(--verde) !important;
+  border: 1px solid var(--verde) !important;
   border-radius: 0 0 4px 4px;
   color: var(--verde-oscuro) !important;
 }
