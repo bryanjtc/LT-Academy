@@ -61,6 +61,10 @@ const Register = () => {
           <Form.Control type="email" placeholder="nombre@ejemplo.com" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Cédula</Form.Label>
+          <Form.Control type="text" placeholder="8-2493-3423" />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Contraseña</Form.Label>
           <Form.Control type="password" placeholder="1234" />
         </Form.Group>
