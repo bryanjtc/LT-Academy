@@ -49,7 +49,7 @@ jobs:
         with:
           node-version: 16
       - run: yarn install --frozen-lockfile --no-progress
-      - uses: sibiraj-s/action-eslint@v2
+      - uses: sibiraj-s/action-eslint@v3
         with:
           eslint-args: "--ignore-path=.gitignore --quiet"
           extensions: "js,jsx,ts,tsx"
